@@ -1,4 +1,4 @@
-using Unity.VisualScripting;
+
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -14,12 +14,7 @@ public class Player : MonoBehaviour
 
     public void OnMove(InputAction.CallbackContext callback)
     {
-        callback.ReadValue<Vector2>();
-    }
-
-    private void Update()
-    {
-        PlayerMoveInput();
+        movement = callback.ReadValue<Vector2>();
     }
 
     private void FixedUpdate()
@@ -27,17 +22,9 @@ public class Player : MonoBehaviour
         PlayerMovement();
     }
 
-    private void PlayerMoveInput()
-    {
-        if (movement != Vector2.zero)
-        {
-            movement.x = Input.GetAxisRaw("Horizontal");
-        }
-    }
-
     void PlayerMovement()
     {
-        Vector2 dir = new Vector2(movement.x * movespeed * Time.fixedDeltaTime, rb.linearVelocity.y);
+        Vector2 dir = new Vector2(movement.x * movespeed, rb.linearVelocity.y);
         rb.linearVelocity = dir;
     }
 }
