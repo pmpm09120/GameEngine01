@@ -116,6 +116,45 @@ public class Player : MonoBehaviour
         {
             rb.gravityScale = defaultGravityScale;
         }
+
+
+        ///목표 시간 도달 방식(Accumulated/Target Time)'과 '남은 시간 차감 방식(Countdown)
+        /// 1 ----------------------------------------
+        /// 게임 시간 경과 + 고정시간과 현재 게임시간의 비교
+        /// float timescale
+        /// float Nexttimescale
+        /// 
+        /// if(Time.time > Nexttimescale )
+        /// {
+        ///     Debug.Log("true");
+        ///     Use();
+        /// }
+        /// else
+        /// {
+        ///     Debug.Log("false");
+        /// }
+        /// 
+        /// void Use()
+        /// {
+        ///     Nexttimescale = Time.time + timescale;
+        /// }
+        /// 
+        /// 2 --------------------------------------------
+        /// 동적 시간값이 0 이상이라면 시간에 따른 차감
+        /// float timescale
+        /// float currenttimescale
+        /// 
+        /// if(currenttimescale > 0)
+        /// {
+        ///     Debug.Log("true");
+        ///     currenttimescale -= Time.deltaTime;
+        /// }
+        /// else
+        /// {
+        ///     Debug.Log("false");
+        ///     currenttimescale = timescale
+        /// }
+        /// 
     }
 
     private void OnDrawGizmos()
