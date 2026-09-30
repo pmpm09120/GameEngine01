@@ -159,9 +159,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 18362454}
+  - component: {fileID: 18362451}
   - component: {fileID: 18362453}
   - component: {fileID: 18362452}
-  - component: {fileID: 18362451}
   - component: {fileID: 18362455}
   m_Layer: 0
   m_Name: player
@@ -414,11 +414,11 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 80832242}
+  - component: {fileID: 80832238}
+  - component: {fileID: 80832243}
   - component: {fileID: 80832241}
   - component: {fileID: 80832240}
   - component: {fileID: 80832239}
-  - component: {fileID: 80832238}
-  - component: {fileID: 80832243}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
