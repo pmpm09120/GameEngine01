@@ -14,6 +14,7 @@ public class Player : MonoBehaviour
     [Header("PlayerSettings")]
     public float movespeed = 8;
     public float jumpPower = 6;
+    public SpriteRenderer spriteRenderer; 
 
     [Header("Jump Buffer / GroundTimer")]
     public float jumpbufferTime = 0.12f;
@@ -62,6 +63,11 @@ public class Player : MonoBehaviour
         TryJump();
         ApplyCustomGravity();
 
+        if (movement.x != 0)
+        {
+            spriteRenderer.flipX = (movement.x < 0) ? true : false;
+        }
+
         //현재 씬 재로드
         if (rb.position.y <= endWorldY)
         {
@@ -82,7 +88,9 @@ public class Player : MonoBehaviour
             inputDir.x = 0;
         }
 
-        rb.linearVelocity = new Vector2(inputDir.x * movespeed, rb.linearVelocity.y);
+        Vector2 velocity = rb.linearVelocity;
+        velocity.x = inputDir.x * movespeed;
+        rb.linearVelocity = velocity;
     }
 
     void TryJump()
@@ -119,8 +127,17 @@ public class Player : MonoBehaviour
         }
         else //점프를 빠르게 눌렀을 경우 점프 판정이 허용되는 시간
         {
+            if (jumpbufferCounter < 0) return;
             jumpbufferCounter -= Time.deltaTime;
         }
+
+        /*
+        if (movement.x != 0)
+        {
+            float f = Mathf.Sign(movement.x);
+            transform.localScale = new Vector3(f, 1f, 1f);//자식 오브젝트도 같이 뒤집힘
+        } 
+        */
     }
 
     private void ApplyCustomGravity()
