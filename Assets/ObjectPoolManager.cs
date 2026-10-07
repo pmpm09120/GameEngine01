@@ -1,6 +1,5 @@
-using NUnit.Framework;
+
 using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
 
 [System.Serializable]
@@ -12,6 +11,8 @@ public struct PoolBox
 public class ObjectPoolManager : MonoBehaviour
 {
     public static ObjectPoolManager instance;
+
+    public Transform PoolParent;
 
     [Header("PoolDataList")]
     public List<PoolBox> Pools;
@@ -42,26 +43,33 @@ public class ObjectPoolManager : MonoBehaviour
 
             for (int i = 0; i < pool.poolSize; i++) //=> initialize Queue
             {
-                GameObject perfab = Instantiate(pool.perfab);
+                GameObject perfab = Instantiate(pool.perfab, PoolParent);
                 perfab.SetActive(false);
                 objects.Enqueue(perfab);
             }
 
             poolDictionary.Add(pool.perfab, objects);
         }
-         
+        Debug.Log("[OPM] Object Pool Data Updated");
+        Debug.Log($"[OPM] poolDictionary Count: {poolDictionary.Count}");
+        Debug.Log($"poolDictionary.Values.Count: {poolDictionary.Values.Count}");
     }
 
-    public GameObject GetPool(GameObject pool, Vector3 pos, Quaternion quaternion)
+    public GameObject GetPool(GameObject poolPrefab, Vector3 pos, Quaternion quaternion)
     {
         GameObject perfab;
-        if (poolDictionary.TryGetValue(pool, out Queue<GameObject> queue))
+        if (poolDictionary.TryGetValue(poolPrefab, out Queue<GameObject> queue))
         {
-            //pool instance
             perfab = queue.Dequeue();
             perfab.SetActive(true);
             perfab.transform.position = pos;
             perfab.transform.rotation = quaternion;
+
+            // ★ 꺼낸 총알에게 자신의 원본 프리팹이 무엇인지 알려줍니다.
+            if (perfab.TryGetComponent(out Bullet bulletScript))
+            {
+                bulletScript.SetOriginPrefab(poolPrefab);
+            }
         }
         else
         {
@@ -71,17 +79,19 @@ public class ObjectPoolManager : MonoBehaviour
         return perfab;
     }
 
-    public void ReturnPool(GameObject pool)
+    // 매개변수를 (어떤 프리팹의 큐인지, 반환할 인스턴스) 형태로 받도록 수정
+    public void ReturnPool(GameObject poolPrefab, GameObject instance)
     {
-        if (poolDictionary.TryGetValue(pool, out Queue<GameObject> queue))
+        if (poolDictionary.TryGetValue(poolPrefab, out Queue<GameObject> queue))
         {
-            pool.SetActive(false);
-            queue.Enqueue(pool);
+            instance.SetActive(false);
+            queue.Enqueue(instance);
         }
         else
         {
             Debug.LogWarning($"[PoolDictionary] null Object in Dictionary");
             return;
         }
+        Debug.Log($"[OPM] Successed ReturnPool / Queue Count: {queue.Count}");
     }
 }
