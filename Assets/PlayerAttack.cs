@@ -39,6 +39,7 @@ public class PlayerAttack : MonoBehaviour
 
         if (fireCoroutine == null)
         {
+            canFire = false;
             fireCoroutine = StartCoroutine(FireCoroutine(0.05f));
             currenttime = cooltime;
         }

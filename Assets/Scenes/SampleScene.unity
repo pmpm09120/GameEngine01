@@ -435,7 +435,7 @@ MonoBehaviour:
   playerInput: {fileID: 18362452}
   bulletData: {fileID: 11400000, guid: 6aefae6924994364a89a9c084b5e3c56, type: 2}
   canFire: 0
-  cooltime: 1
+  cooltime: 3
   currenttime: 0
   FirePoint: {fileID: 1492242294}
   firePower: 20
