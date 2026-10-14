@@ -48,6 +48,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Enemy
   MaxHealth: 30
+  enemyData: {fileID: 11400000, guid: cd4e448361e35c7478438e90136a0b21, type: 2}
   health: 0
 --- !u!61 &1994152972408243322
 BoxCollider2D:

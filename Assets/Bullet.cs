@@ -7,14 +7,10 @@ public class Bullet : MonoBehaviour
     private int Damage;
     public float lifeTime = 5f;
     public float time;
-    public GameObject OriginBullet;
+    public PerfabID_Data bulletData;
     private void OnEnable()
     {
         time = lifeTime;
-    }
-    public void SetOriginPrefab(GameObject prefab)
-    {
-        OriginBullet = prefab;
     }
     public void GetStats(int dam)
     {
@@ -35,7 +31,7 @@ public class Bullet : MonoBehaviour
 
     private void ReturnBullet()
     {
-        ObjectPoolManager.instance.ReturnPool(OriginBullet, gameObject); //자기자신(Clone)을 보내면 실패함.
+        ObjectPoolManager.instance.ReturnPool(bulletData.id, gameObject); 
     }
 
     private void Update()

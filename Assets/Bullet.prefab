@@ -47,9 +47,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 532e0ccf5f2290248a4298bb6194954b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Bullet
-  lifeTime: 5
+  lifeTime: 2
   time: 0
-  OriginBullet: {fileID: 408812731875330453}
+  bulletData: {fileID: 11400000, guid: 6aefae6924994364a89a9c084b5e3c56, type: 2}
 --- !u!50 &-2876396631572576345
 Rigidbody2D:
   serializedVersion: 5

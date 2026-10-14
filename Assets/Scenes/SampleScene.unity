@@ -185,7 +185,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerMovement
   rb: {fileID: 18362455}
-  movespeed: 12
+  movespeed: 5
   playerInput: {fileID: 18362452}
 --- !u!114 &18362452
 MonoBehaviour:
@@ -433,12 +433,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerAttack
   playerInput: {fileID: 18362452}
-  Bullet: {fileID: 408812731875330453, guid: 7244d6a5526b0bf47af1a166947e83d6, type: 3}
+  bulletData: {fileID: 11400000, guid: 6aefae6924994364a89a9c084b5e3c56, type: 2}
   canFire: 0
-  cooltime: 0.5
+  cooltime: 1
   currenttime: 0
   FirePoint: {fileID: 1492242294}
-  firePower: 50
+  firePower: 20
   BulletDamage: 5
 --- !u!61 &18362457
 BoxCollider2D:
@@ -782,8 +782,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 80832237}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1, z: 0}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 5.75549, y: 0.75597, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -792,7 +792,7 @@ Transform:
   - {fileID: 9524414}
   - {fileID: 1679246680}
   - {fileID: 702557320}
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 1253838141}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &80832243
 MonoBehaviour:
@@ -820,7 +820,7 @@ GameObject:
   - component: {fileID: 97385959}
   m_Layer: 0
   m_Name: CollisonBox (3)
-  m_TagString: Untagged
+  m_TagString: MapCollison
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1936,9 +1936,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::ObjectPoolManager
   PoolParent: {fileID: 619512090}
   Pools:
-  - perfab: {fileID: 408812731875330453, guid: 7244d6a5526b0bf47af1a166947e83d6, type: 3}
+  - perfabData: {fileID: 11400000, guid: 6aefae6924994364a89a9c084b5e3c56, type: 2}
     poolSize: 30
-  - perfab: {fileID: 5672986630997740695, guid: 9dacee5518d962748a70c480b5cbe634, type: 3}
+  - perfabData: {fileID: 11400000, guid: cd4e448361e35c7478438e90136a0b21, type: 2}
     poolSize: 30
 --- !u!4 &499099260
 Transform:
@@ -2332,6 +2332,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 747912766}
+  - component: {fileID: 747912767}
   m_Layer: 0
   m_Name: Map
   m_TagString: Untagged
@@ -2360,6 +2361,23 @@ Transform:
   - {fileID: 97385957}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &747912767
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 747912765}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f3e7fced04b0e8b40952b93031b09df4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::MapMove
+  map1: {fileID: 61757753}
+  map2: {fileID: 474890941}
+  movespeed: 5
+  endy: -12
+  mapHeight: 12
 --- !u!1 &880282266
 GameObject:
   m_ObjectHideFlags: 0
@@ -2982,7 +3000,10 @@ Transform:
   m_LocalPosition: {x: -5.75549, y: 0.24403, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 1331246801}
+  - {fileID: 2066881916}
+  - {fileID: 80832242}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1331246800
@@ -3011,13 +3032,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1331246800}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -10}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 5.75549, y: -0.24403, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 519420032}
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 1253838141}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1331246802
 MonoBehaviour:
@@ -3070,7 +3091,7 @@ GameObject:
   - component: {fileID: 1426509902}
   m_Layer: 0
   m_Name: CollisonBox (2)
-  m_TagString: Untagged
+  m_TagString: MapCollison
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3268,7 +3289,7 @@ GameObject:
   - component: {fileID: 1436848996}
   m_Layer: 0
   m_Name: CollisonBox (1)
-  m_TagString: Untagged
+  m_TagString: MapCollison
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3444,6 +3465,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Enemy
       objectReference: {fileID: 0}
+    - target: {fileID: 7742607812845023365, guid: 9dacee5518d962748a70c480b5cbe634, type: 3}
+      propertyPath: pattern
+      value: 5
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -3554,7 +3579,7 @@ GameObject:
   - component: {fileID: 1675079140}
   m_Layer: 0
   m_Name: CollisonBox
-  m_TagString: Untagged
+  m_TagString: MapCollison
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4041,7 +4066,7 @@ Transform:
   m_GameObject: {fileID: 2066881915}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -5.75549, y: 0.24403, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -4053,7 +4078,7 @@ Transform:
   - {fileID: 432176265}
   - {fileID: 895443762}
   - {fileID: 880282270}
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 1253838141}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2145623649
 GameObject:
@@ -4227,13 +4252,10 @@ SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:
   - {fileID: 1253838141}
-  - {fileID: 1331246801}
-  - {fileID: 619394802}
-  - {fileID: 2066881916}
-  - {fileID: 80832242}
   - {fileID: 1816158668}
-  - {fileID: 405097328}
+  - {fileID: 619394802}
   - {fileID: 1143242067}
+  - {fileID: 405097328}
   - {fileID: 499099260}
   - {fileID: 1985711825}
   - {fileID: 619512090}

@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -6,7 +7,7 @@ public class PlayerAttack : MonoBehaviour
     public PlayerInput playerInput;
 
     [Header("AttackSettings")]
-    public GameObject Bullet;
+    public PerfabID_Data bulletData;
     public bool canFire = false;
     public float cooltime = 0.5f;//발사지연
     public float currenttime;
@@ -27,6 +28,7 @@ public class PlayerAttack : MonoBehaviour
         }
     }
 
+    Coroutine fireCoroutine;
     private void Fire()
     {
         if (!canFire)
@@ -34,18 +36,33 @@ public class PlayerAttack : MonoBehaviour
             Debug.Log($"[PlayerAttack] 발사 지연시간 {currenttime}초");
             return;
         }
-        GameObject bullet = ObjectPoolManager.instance.GetPool(Bullet, FirePoint.transform.position, FirePoint.rotation);
 
-        if (bullet.TryGetComponent(out Bullet perfab))
+        if (fireCoroutine == null)
         {
-            perfab.GetStats(BulletDamage);
+            fireCoroutine = StartCoroutine(FireCoroutine(0.05f));
+            currenttime = cooltime;
         }
-        if (bullet.TryGetComponent(out Rigidbody2D rb))
+    }
+
+    IEnumerator FireCoroutine(float delay)
+    {
+        for (int i = 0; i < 3; i++)
         {
-            rb.AddForce(FirePoint.up * firePower, ForceMode2D.Impulse);
+            GameObject bullet = ObjectPoolManager.instance.GetPool(bulletData.id, FirePoint.transform.position, FirePoint.rotation);
+
+            if (bullet.TryGetComponent(out Bullet perfab))
+            {
+                perfab.GetStats(BulletDamage);
+            }
+            if (bullet.TryGetComponent(out Rigidbody2D rb))
+            {
+                rb.AddForce(FirePoint.up * firePower, ForceMode2D.Impulse);
+            }
+
+            yield return new WaitForSeconds(delay);
         }
 
-        currenttime = cooltime;
+        fireCoroutine = null;
     }
 
     private void Update()
