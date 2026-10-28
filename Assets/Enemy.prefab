@@ -48,8 +48,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Enemy
   MaxHealth: 30
-  enemyData: {fileID: 11400000, guid: cd4e448361e35c7478438e90136a0b21, type: 2}
   health: 0
+  enemyData: {fileID: 11400000, guid: cd4e448361e35c7478438e90136a0b21, type: 2}
+  rb: {fileID: 7893286443362966943}
+  movespeed: 5
+  pathID: 0
+  waypoints: []
+  currentIndex: 0
+  statePattern: 0
+  sprite: {fileID: 106593484266661285}
 --- !u!61 &1994152972408243322
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -94,7 +101,7 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 0.5, y: 0.5}
   m_EdgeRadius: 0
 --- !u!50 &7893286443362966943
 Rigidbody2D:
