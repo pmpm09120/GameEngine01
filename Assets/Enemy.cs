@@ -68,6 +68,11 @@ Circle, Forward, Stop, / or \, left or right
     public bool isSmall; //적 객체가 플레이어와 부딪히는 것으로 파괴되는지
     public float CollisionDamage;
 
+    //초기 생성 무적 시간
+    public float Godtime;
+    public float currentGodtime;
+    public bool isGod;
+
 
     private void Start()
     {
@@ -79,6 +84,14 @@ Circle, Forward, Stop, / or \, left or right
         if (waypoints != null && waypoints.Count != 0)
         {
             rb.transform.position = waypoints[0].position;
+        }
+    }
+
+    private void Update()
+    {
+        if (currentGodtime >= 0)
+        {
+
         }
     }
 

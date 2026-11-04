@@ -2493,7 +2493,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7742607812845023365, guid: 9dacee5518d962748a70c480b5cbe634, type: 3}
       propertyPath: movespeed
-      value: 4
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 7742607812845023365, guid: 9dacee5518d962748a70c480b5cbe634, type: 3}
       propertyPath: statePattern
@@ -3844,7 +3844,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7742607812845023365, guid: 9dacee5518d962748a70c480b5cbe634, type: 3}
       propertyPath: movespeed
-      value: 4
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 7742607812845023365, guid: 9dacee5518d962748a70c480b5cbe634, type: 3}
       propertyPath: statePattern
@@ -3993,6 +3993,10 @@ PrefabInstance:
       value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 7742607812845023365, guid: 9dacee5518d962748a70c480b5cbe634, type: 3}
+      propertyPath: movespeed
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 7742607812845023365, guid: 9dacee5518d962748a70c480b5cbe634, type: 3}
       propertyPath: CollisionDamage
       value: 1
       objectReference: {fileID: 0}
@@ -4104,7 +4108,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7742607812845023365, guid: 9dacee5518d962748a70c480b5cbe634, type: 3}
       propertyPath: movespeed
-      value: 5
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 7742607812845023365, guid: 9dacee5518d962748a70c480b5cbe634, type: 3}
       propertyPath: statePattern
@@ -4329,7 +4333,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7742607812845023365, guid: 9dacee5518d962748a70c480b5cbe634, type: 3}
       propertyPath: movespeed
-      value: 4
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 7742607812845023365, guid: 9dacee5518d962748a70c480b5cbe634, type: 3}
       propertyPath: statePattern
@@ -4833,6 +4837,10 @@ PrefabInstance:
     - target: {fileID: 7742607812845023365, guid: 9dacee5518d962748a70c480b5cbe634, type: 3}
       propertyPath: pattern
       value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 7742607812845023365, guid: 9dacee5518d962748a70c480b5cbe634, type: 3}
+      propertyPath: movespeed
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 7742607812845023365, guid: 9dacee5518d962748a70c480b5cbe634, type: 3}
       propertyPath: CollisionDamage
