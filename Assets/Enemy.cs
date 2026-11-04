@@ -76,6 +76,10 @@ Circle, Forward, Stop, / or \, left or right
         //MovePattern(pattern, 3f);
 
         waypoints = PathGenerator.Instance.GeneratePath(pathID);
+        if (waypoints != null && waypoints.Count != 0)
+        {
+            rb.transform.position = waypoints[0].position;
+        }
     }
 
     public int _health
@@ -172,6 +176,7 @@ Circle, Forward, Stop, / or \, left or right
 
     private void RemoveWaypoints()
     {
+        if (waypoints == null || waypoints.Count == 0) return;
         foreach (var w in waypoints)
         {
             Destroy(w.gameObject);
