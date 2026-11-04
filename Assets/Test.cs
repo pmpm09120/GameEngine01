@@ -29,8 +29,10 @@ class Huaman
         height = _height;
     }
 
-    class Adult: Huaman
-    {
-        public Adult(string _name, int _age, float _height) : base(_name, _age, _height) { }
-    }
+
+}
+
+class Adult : Huaman
+{
+    public Adult(string _name, int _age, float _height) : base(_name, _age, _height) { }
 }

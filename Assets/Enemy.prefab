@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 7742607812845023365}
   - component: {fileID: 1994152972408243322}
   - component: {fileID: 7893286443362966943}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Enemy
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -55,8 +55,11 @@ MonoBehaviour:
   pathID: 0
   waypoints: []
   currentIndex: 0
-  statePattern: 0
+  isMove: 0
+  statePattern: 1
   sprite: {fileID: 106593484266661285}
+  isSmall: 1
+  CollisionDamage: 0
 --- !u!61 &1994152972408243322
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -101,7 +104,7 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 0.5, y: 0.5}
+  m_Size: {x: 0.5, y: 0.35}
   m_EdgeRadius: 0
 --- !u!50 &7893286443362966943
 Rigidbody2D:
@@ -140,7 +143,7 @@ GameObject:
   m_Component:
   - component: {fileID: 722211837045807532}
   - component: {fileID: 106593484266661285}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Enemy A
   m_TagString: Untagged
   m_Icon: {fileID: 0}

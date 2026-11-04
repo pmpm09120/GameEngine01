@@ -1,10 +1,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu(menuName = "New PathData", fileName = "ScriptAbleObjcet/PathData")]
+[CreateAssetMenu(menuName = "New PathData", fileName = "PathData/ScriptAbleObjcet")]
 public class PathData : ScriptableObject
 {
-    [SerializeField] private int pathID;
-    public List<Transform> waypoints;
-
+    public int pathID;
+    public List<Vector3> waypoints;
 }

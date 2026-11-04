@@ -60,17 +60,22 @@ Circle, Forward, Stop, / or \, left or right
     public int pathID;
     public List<Transform> waypoints = new List<Transform>();
     public int currentIndex = 0;
+    public bool isMove = false;
 
     [Header("Enemy")]
     public State statePattern;
     public SpriteRenderer sprite;
+    public bool isSmall; //적 객체가 플레이어와 부딪히는 것으로 파괴되는지
+    public float CollisionDamage;
 
 
     private void Start()
     {
         health = MaxHealth;
-
+        StatePattern();
         //MovePattern(pattern, 3f);
+
+        waypoints = PathGenerator.Instance.GeneratePath(pathID);
     }
 
     public int _health
@@ -82,14 +87,23 @@ Circle, Forward, Stop, / or \, left or right
         }
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.CompareTag("MapCollison"))
         {
             Die();
         }
+        else if (collision.gameObject.CompareTag("Player") && isSmall)
+        {
+            if (collision.gameObject.TryGetComponent<PlayerMovement>(out var player))
+            {
+                Debug.Log("접촉");
+                player.TakeDamage(CollisionDamage);
+                Die();
+            }
+        }
     }
-    public virtual void TakeDamage(int dam)
+    public void TakeDamage(int dam)
     {
         _health -= dam;
         StartCoroutine(HitColor());
@@ -101,7 +115,9 @@ Circle, Forward, Stop, / or \, left or right
     public void Die()
     {
         Debug.Log($"[TK]{gameObject.name} Died");
-        ObjectPoolManager.instance.ReturnPool(enemyData.id, gameObject);
+        RemoveWaypoints();
+        Destroy(gameObject);
+        //ObjectPoolManager.instance.ReturnPool(enemyData.id, gameObject);
     }
 
     IEnumerator HitColor()
@@ -111,7 +127,6 @@ Circle, Forward, Stop, / or \, left or right
         sprite.color = Color.white;
     }
 
-    bool isMove = false;
     public void StatePattern()
     {
         switch (statePattern)
@@ -130,13 +145,14 @@ Circle, Forward, Stop, / or \, left or right
         Vector2 dir = target - (Vector2)rb.position;
         float distance = dir.magnitude;
 
-        if (distance <= 0.01f)
+        if (distance <= 0.001f)
         {
             currentIndex++;
             if (currentIndex >= waypoints.Count)
             {
                 isMove = false;
                 currentIndex = 0;
+                RemoveWaypoints();
                 Debug.Log($"[Enemy] name: {gameObject.name} / Log: Waypoint Progress Ended");
             }
         }
@@ -152,6 +168,20 @@ Circle, Forward, Stop, / or \, left or right
         {
             Move();
         }
+    }
+
+    private void RemoveWaypoints()
+    {
+        foreach (var w in waypoints)
+        {
+            Destroy(w.gameObject);
+        }
+        waypoints.Clear();
+    }
+
+    public virtual void AttackPattern()
+    {
+        
     }
 
     /*
