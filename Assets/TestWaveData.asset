@@ -14,18 +14,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::WaveData
   wave_id: 0
   TimeScripts:
-  - startTime: 0
+  - startTime: 10
     isBoss: 0
     spawnGroups:
-    - enemyData: {fileID: 0}
-      amount: 0
-      Interval: 0
-  - startTime: 0
-    isBoss: 0
-    spawnGroups:
-    - enemyData: {fileID: 0}
-      amount: 0
-      Interval: 0
-    - enemyData: {fileID: 0}
-      amount: 0
-      Interval: 0
+    - spawnObjs:
+      - poolID: 101
+        pathID: 1
+      - poolID: 101
+        pathID: 2
+      - poolID: 101
+        pathID: 3
+      Interval: 1

@@ -49,6 +49,8 @@ public class WaveSystem : MonoBehaviour
         if (currentWave >= waveData.TimeScripts.Count || currentWave < 0)
         {
             Debug.LogWarning($"[WaveSystem] 현재 웨이브: {currentWave} / 현재 웨이브는 waveData에 존재하지 않습니다.");
+            Debug.LogWarning($"[WaveSystem] 현재 웨이브: {currentWave} / 웨이브를 종료합니다.");
+            EndWave();
             return;
         }
 
@@ -76,12 +78,9 @@ public class WaveSystem : MonoBehaviour
 
     public void EndWave()
     {
-        //마지막 웨이브 일때, 보스 적 스크립트에 자기자신이 죽을시 EndWave 호출
-        if (waveData.TimeScripts[currentWave].isBoss)
-        {
-            Debug.Log("[WaveSystem] 보스가 처리되어 웨이브가 끝났습니다. / 데이터를 초기화 합니다.");
-            InitalizeData();
-        }
+        //GameManager 혹은 Boss Enemy과 연동
+        Debug.Log("[WaveSystem] 웨이브가 끝났습니다. / 데이터를 초기화 합니다.");
+        InitalizeData();
     }
 
     IEnumerator SpawnProgress(float delay, int index)
