@@ -60,6 +60,8 @@ MonoBehaviour:
   sprite: {fileID: 106593484266661285}
   isSmall: 1
   CollisionDamage: 0
+  isGod: 1
+  GodTime: 3
 --- !u!61 &1994152972408243322
 BoxCollider2D:
   m_ObjectHideFlags: 0

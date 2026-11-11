@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using System.Collections;
 using UnityEngine;
 using Unity.AI.Navigation.LowLevel;
+using Unity.VisualScripting;
 
 public enum Pattern { Forward, Circle, Left, Right, Diagonal, Stop }
 public enum State { Spawn, Move, Attack, MovingAttack, Stop }
@@ -69,10 +70,8 @@ Circle, Forward, Stop, / or \, left or right
     public float CollisionDamage;
 
     //초기 생성 무적 시간
-    public float Godtime;
-    public float currentGodtime;
     public bool isGod;
-
+    public int GodTime;
 
     private void Start()
     {
@@ -85,14 +84,14 @@ Circle, Forward, Stop, / or \, left or right
         {
             rb.transform.position = waypoints[0].position;
         }
+
+
+        //무적
+        StartCoroutine(GodCorutine(GodTime));
     }
 
     private void Update()
     {
-        if (currentGodtime >= 0)
-        {
-
-        }
     }
 
     public int _health
@@ -122,6 +121,7 @@ Circle, Forward, Stop, / or \, left or right
     }
     public void TakeDamage(int dam)
     {
+        if (isGod) return;
         _health -= dam;
         StartCoroutine(HitColor());
         if (health <= 0)
@@ -178,7 +178,6 @@ Circle, Forward, Stop, / or \, left or right
             rb.MovePosition(rb.position + dir.normalized * movespeed * Time.deltaTime);
         }
     }
-
     private void FixedUpdate()
     {
         if (isMove)
@@ -200,6 +199,12 @@ Circle, Forward, Stop, / or \, left or right
     public virtual void AttackPattern()
     {
         
+    }
+
+    IEnumerator GodCorutine(int time)
+    {
+        yield return new WaitForSeconds(time);
+        isGod = false;
     }
 
     /*

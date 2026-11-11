@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu(menuName = "New PathData", fileName = "PathData/ScriptAbleObjcet")]
+[CreateAssetMenu(fileName = "New PathData", menuName = "ScriptAbleObject/PathData")]
 public class PathData : ScriptableObject
 {
     public int pathID;
