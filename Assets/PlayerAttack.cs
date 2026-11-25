@@ -13,6 +13,7 @@ public class PlayerAttack : MonoBehaviour
     public float currenttime;
     public Transform FirePoint; //총알 시작 위치 및 방향
     public float firePower = 50f;
+    public int fireCount = 1;
     public int BulletDamage = 5;
 
     private void OnEnable()
@@ -47,7 +48,7 @@ public class PlayerAttack : MonoBehaviour
 
     IEnumerator FireCoroutine(float delay)
     {
-        for (int i = 0; i < 3; i++)
+        for (int i = 0; i < fireCount; i++)
         {
             GameObject bullet = ObjectPoolManager.instance.GetPool(bulletData.id, FirePoint.transform.position, FirePoint.rotation);
 

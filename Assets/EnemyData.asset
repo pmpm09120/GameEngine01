@@ -14,4 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::PerfabID_Data
   perfabName: Enemy01
   id: 101
-  perfab: {fileID: 5672986630997740695, guid: 9dacee5518d962748a70c480b5cbe634, type: 3}
+  perfab: {fileID: 6146616350694127770, guid: 043e52c5e37bec441bf1975c103a5fd9, type: 3}

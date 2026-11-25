@@ -9,6 +9,7 @@ public class PlayerMovement : MonoBehaviour
     public float movespeed = 5f;
     private Vector2 movement;
     public PlayerInput playerInput;
+    public Animator animator;
 
     [Header("PlayerHealth")]
     public float MaxHealth;
@@ -35,6 +36,12 @@ public class PlayerMovement : MonoBehaviour
     public void OnMove(InputAction.CallbackContext callback)
     {
         movement = callback.ReadValue<Vector2>();
+
+        float rightValue = movement.x > 0.01f ? movement.x : 0f;
+        float leftValue = movement.x < -0.01f ? movement.x : 0f;
+
+        animator.SetFloat("Right", rightValue);
+        animator.SetFloat("Left", leftValue);
     }
     private void FixedUpdate()
     {
