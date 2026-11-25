@@ -71,7 +71,7 @@ public class PlayerAttack : MonoBehaviour
         if (currenttime <= 0)
         {
             canFire = true;
-            Fire();
+            //Fire();
         }
         else if (currenttime >= 0)
         {

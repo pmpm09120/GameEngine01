@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 7742607812845023365}
   - component: {fileID: 1994152972408243322}
   - component: {fileID: 7893286443362966943}
+  - component: {fileID: 6550870501174894964}
   m_Layer: 8
   m_Name: Enemy
   m_TagString: Enemy
@@ -59,9 +60,10 @@ MonoBehaviour:
   statePattern: 1
   sprite: {fileID: 106593484266661285}
   isSmall: 1
-  CollisionDamage: 0
+  CollisionDamage: 1
   isGod: 1
   GodTime: 3
+  animator: {fileID: 6550870501174894964}
 --- !u!61 &1994152972408243322
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -135,6 +137,28 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
+--- !u!95 &6550870501174894964
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5672986630997740695}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: b3603cd1cb9c7a847927d0eeaa354011, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &6476438812079160475
 GameObject:
   m_ObjectHideFlags: 0

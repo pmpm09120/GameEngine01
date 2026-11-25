@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::WaveData
   wave_id: 0
   TimeScripts:
-  - startTime: 10
+  - startTime: 3
     isBoss: 0
     spawnGroups:
     - spawnObjs:
@@ -24,4 +24,4 @@ MonoBehaviour:
         pathID: 2
       - poolID: 101
         pathID: 3
-      Interval: 1
+      Interval: 0.01

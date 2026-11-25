@@ -5,7 +5,7 @@ using Unity.AI.Navigation.LowLevel;
 using Unity.VisualScripting;
 
 public enum Pattern { Forward, Circle, Left, Right, Diagonal, Stop }
-public enum State { Spawn, Move, Attack, MovingAttack, Stop }
+public enum State { Spawn, Move, Attack, MovingAttack, Stop, Hit }
 public class Enemy : MonoBehaviour
 {
     /*
@@ -73,6 +73,9 @@ Circle, Forward, Stop, / or \, left or right
     public bool isGod;
     public int GodTime;
 
+    [Header("Animation")]
+    public Animator animator;
+
     private void Start()
     {
         health = MaxHealth;
@@ -139,17 +142,25 @@ Circle, Forward, Stop, / or \, left or right
 
     IEnumerator HitColor()
     {
-        sprite.color = Color.red;
+        statePattern = State.Hit;
+        StatePattern();
+        //sprite.color = Color.red;
         yield return new WaitForSeconds(0.5f);
-        sprite.color = Color.white;
+        //sprite.color = Color.white;
+        statePattern = State.Move;
+        StatePattern();
     }
 
+    //상태머신 + 애니메이션
     public void StatePattern()
     {
         switch (statePattern)
         {
             case State.Move:
                 isMove = true;
+                break;
+            case State.Hit:
+                animator.SetTrigger("Hit");
                 break;
         }
     }
